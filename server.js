@@ -169,9 +169,6 @@ const db = new sqlite3.Database('./university.db', (err) => {
     }
 });
 
-// ========== API ENDPOINTS ==========
-
-// GET /api/courses - SELECT all courses
 app.get('/api/courses', (req, res) => {
     const sql = 'SELECT * FROM courses';
     
@@ -187,7 +184,6 @@ app.get('/api/courses', (req, res) => {
     });
 });
 
-// GET /api/courses/:id - SELECT course by ID
 app.get('/api/courses/:id', (req, res) => {
     const id = req.params.id;
     const sql = 'SELECT * FROM courses WHERE id = ?';
@@ -205,8 +201,6 @@ app.get('/api/courses/:id', (req, res) => {
         }
     });
 });
-
-// POST /api/courses - INSERT new course
 app.post('/api/courses', (req, res) => {
     const { courseCode, title, credits, description, semester } = req.body;
     
@@ -241,7 +235,6 @@ app.post('/api/courses', (req, res) => {
     });
 });
 
-// PUT /api/courses/:id - UPDATE existing course
 app.put('/api/courses/:id', (req, res) => {
     const id = req.params.id;
     const { courseCode, title, credits, description, semester } = req.body;
@@ -280,7 +273,6 @@ app.put('/api/courses/:id', (req, res) => {
     });
 });
 
-// DELETE /api/courses/:id - DELETE course
 app.delete('/api/courses/:id', (req, res) => {
     const id = req.params.id;
     const sql = 'DELETE FROM courses WHERE id = ?';
@@ -316,3 +308,4 @@ process.on('SIGINT', () => {
         process.exit(0);
     });
 });
+
